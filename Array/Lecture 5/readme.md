@@ -1,4 +1,4 @@
-# Electure Day 5
+# Lecture Day 5
 
 ## Question 1a:
 

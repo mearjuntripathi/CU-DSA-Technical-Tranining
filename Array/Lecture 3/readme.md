@@ -1,4 +1,4 @@
-# Electure Day 3
+# Lecture Day 3
 
 ## Question 1: 
 Given an array of integers nums, calculate the pivot index of this array.
