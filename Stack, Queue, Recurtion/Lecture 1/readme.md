@@ -15,16 +15,18 @@ Design and implement a stack that supports the following operations:
 1. **Push**: Add an element to the top of the stack.
 2. **Pop**: Remove and return the element at the top of the stack. If the stack is empty, return a message indicating that the stack is empty.
 3. **isEmpty**: Check whether the stack is empty. Return `true` if the stack is empty, and `false` otherwise.
-4. **Clear**: Remove all elements from the stack.
+4. **top**: Show top value if it avilable 
+5. **Clear**: Remove all elements from the stack.
 
 ### Instructions
 
 1. Define a stack class with the necessary attributes and methods.
 2. Implement the `push` method to add an element to the top of the stack.
 3. Implement the `pop` method to remove and return the top element of the stack. Ensure it handles the case where the stack is empty.
-4. Implement the `isEmpty` method to check if the stack is empty.
-5. Implement the `clear` method to remove all elements from the stack.
-6. Ensure the stack works correctly by testing it with various scenarios.
+4. Implement the `top` method to show top value of stack.
+5. Implement the `isEmpty` method to check if the stack is empty.
+6. Implement the `clear` method to remove all elements from the stack.
+7. Ensure the stack works correctly by testing it with various scenarios.
 
 <!-- ### Sample Function Signatures
 
@@ -64,7 +66,8 @@ int main() {
     s.push(20);
     s.push(30);
 
-    cout << "Top element is: " << s.pop() << endl; // Output: Top element is: 30
+    cout << "Top element is: " << s.top() << endl; // Output: Top element is: 30
+    cout << "Top element is: " << s.pop() << endl; // Output: Top element is: 30 and it removed
     cout << "Is stack empty? " << (s.isEmpty() ? "Yes" : "No") << endl; // Output: Is stack empty? No
     
     s.clear();
@@ -190,7 +193,7 @@ Help Alex simplify the following paths:
 
 ### Constraints
 
-- \(1 \leq \text{path.length} \leq 3000\)
+- `1 <= path.length <= 3000`
 - `path` consists of English letters, digits, period `'.'`, slash `'/'`, or underscore `'_'`.
 - `path` is a valid absolute Unix path.
 
