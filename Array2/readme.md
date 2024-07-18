@@ -355,13 +355,12 @@ For the second query, rotate the given array to the left by 4 elements, so the r
 
 For the third query, rotate the given array to the left by 1 element, so the resultant array is: [2, 3, 4, 5, 6, 1].
 
-Detailed explanation ( Input/output format, Notes, Images )
-Constraints:
-1 <= T <= 10 
-1 <= N <= 1000
-1 <= Q <= 100
-0 <= Queries[i] <= 10^5
--10^5 <= Array[i] <= 10^5
+**Constraints:**
+- 1 <= T <= 10
+- 1 <= N <= 1000
+- 1 <= Q <= 100
+- 0 <= Queries[i] <= 10^5
+- -10^5 <= Array[i] <= 10^5
 
 Where 'Queries[i]' denotes the extent to which the array in each query needs to be rotated and 'Array[i]' denotes the array element.
 

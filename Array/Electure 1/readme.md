@@ -72,3 +72,57 @@ Given an integer array `nums` sorted in **non-decreasing** order, return an arra
 > `nums` is sorted in non-decreasing order.
 
 ***Follow up:** Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?*
+
+## Question 4:
+
+Once upon a time in a faraway kingdom, there was a legendary treasure hidden deep in the enchanted forest. The treasure was protected by a series of mystical clues, each represented as an array of numbers. The brave adventurers who wished to find the treasure had to decode these arrays to discover the hidden message that would lead them to the treasure.
+
+The kingdom's wise old wizard provided the following clue to the adventurers:
+
+"To find the treasure, you must identify the most valuable sequence within the array of clues. This sequence will be the subarray with the largest sum. But beware, the array might contain both positive and negative numbers, and the treasure can only be found if you decode this sequence correctly."
+
+### Task
+
+Write a program to help the adventurers find the subarray with the largest sum in a given array of integers. Your program should take an array of integers as input and return the sum of the subarray with the largest sum.
+
+### Input
+
+- An array of integers `arr` representing the clues.
+
+### Output
+
+- An integer representing the sum of the subarray with the largest sum.
+
+### Constraints
+
+- The array can contain both positive and negative integers.
+- The length of the array can be up to 10^5.
+
+### Example
+
+#### Example 1:
+```
+Input: [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum of 6.
+```
+
+#### Example 2:
+```
+Input: [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum of 1.
+```
+
+#### Example 3:
+```
+Input: [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum of 23.
+```
+
+### Instructions
+
+1. Define a function that takes an array of integers as input.
+2. Implement the function to find the subarray with the largest sum.
+3. Return the sum of this subarray.
