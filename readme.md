@@ -19,6 +19,7 @@ The definition of a data structure and algorithm is as follows:
 
 
 ### Here are some examples of data structures:
+![](https://iq.opengenus.org/content/images/2023/01/Screenshot--1017-.png)
 
     Linear data structures: 
             Arrays, 
@@ -32,9 +33,9 @@ The definition of a data structure and algorithm is as follows:
             Graphs, and 
             Hash tables.
 
-![storing data item](https://miro.medium.com/v2/resize:fit:753/1*nkWLOK7vvuM7Km621CE_dg.png)
+![storing data item](https://media.licdn.com/dms/image/D4D12AQHmV3oe-yoT0A/article-cover_image-shrink_720_1280/0/1706987145465?e=2147483647&v=beta&t=SAhdQohe4h2LacVCdpzb94MrLbE_t9hWMuUnDX6nVxY)
 
-### Here are some examples of algorithms:
+<!-- ### Here are some examples of algorithms:
 
     Sorting algorithms: 
             Bubble sort, 
@@ -49,4 +50,4 @@ The definition of a data structure and algorithm is as follows:
     Compression algorithms: 
             Huffman coding, 
             LZW compression, and 
-            JPEG compression.
+            JPEG compression. -->
