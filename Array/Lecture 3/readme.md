@@ -122,19 +122,21 @@ Write the code that will take a string and make this conversion given a number o
 
 **Example 1:**
 ```
-Input: s = "PAYPALISHIRING", numRows = 3
-Output: "PAHNAPLSIIGYIR"
+Input: s = "HELLOFROMTHEOTHER", numRows = 5
+Output: "HOOEERLLFOMTHTR"
 ```
 **Example 2:**
 ```
-Input: s = "PAYPALISHIRING", numRows = 4
-Output: "PINALSIGYAHRPI"
+Input: s = "HELLOFROMTHEOTHER", numRows = 5
+Output: "HOOEERLLFOMTHTR"
 Explanation:
-P     I    N
-A   L S  I G
-Y A   H R
-P     I
+H   O   E   T
+E L   O R M
+L   F   H   H
+L   O   T
+O   R
 ```
+
 **Example 3:**
 ```
 Input: s = "A", numRows = 1

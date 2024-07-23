@@ -28,7 +28,7 @@ Constraints:
 
 **Follow up:** Can you solve the problem in `O(log(n))` time complexity?
 
-<!-- ## Solution 
+## Solution 
 
 **Intuition and Approach:**
 
@@ -84,7 +84,7 @@ The problem involves searching for a target value in a sorted integer array. Her
 
 - Use linear search for small or unsorted arrays where the overhead of sorting or maintaining a sorted array is not justified.
 - Use binary search for large, sorted arrays where the target value can be quickly found due to the logarithmic time complexity.
- -->
+
 
 ## Question 1b: 
 There is an integer array `nums` sorted in ascending order (with distinct values).
@@ -120,7 +120,7 @@ Output: -1
 
 **Follow up:** Can you solve the problem in `O(log(n))` time complexity?
 
-<!-- ## Solution 
+## Solution 
 **Intuition and Approach:**
 
 The problem involves searching for a target value in a rotated sorted integer array. Here's how the two provided solutions tackle this:
@@ -186,7 +186,7 @@ The problem involves searching for a target value in a rotated sorted integer ar
 **Choosing the Right Approach:**
 
 - Use linear search for small or unsorted arrays where the overhead of sorting or maintaining a sorted array is not justified.
-- Use rotational binary search for large, rotated sorted arrays where the target value can be quickly found due to the logarithmic time complexity. -->
+- Use rotational binary search for large, rotated sorted arrays where the target value can be quickly found due to the logarithmic time complexity.
 
 ## Question 2: 
 Given an integer array `nums`, find a peak element. A peak element is an element that is not smaller than its neighbors. If the array contains multiple peaks, return the index to any one of the peaks.
@@ -217,7 +217,7 @@ Explanation: Your function can return index number 1 where the peak element is 2
 
 **Follow up:** Your solution should run in O(log n) time complexity.
 
-<!-- ## Solution 
+## Solution 
 
 **Intuition and Approach:**
 
@@ -295,7 +295,7 @@ The problem involves finding a peak element in a given integer array, where a pe
 **Choosing the Right Approach:**
 
 - Use the brute force approach for small arrays or when a simple implementation is preferred.
-- Use the optimal approach for large arrays to take advantage of the logarithmic time complexity for efficient peak element finding. -->
+- Use the optimal approach for large arrays to take advantage of the logarithmic time complexity for efficient peak element finding.
 
 ## Question 3: 
 Given an array `nums` sorted in non-decreasing order, return the maximum between the number of positive integers and the number of negative integers.
@@ -332,7 +332,7 @@ Explanation: There are 4 positive integers and 0 negative integers. The maximum 
 
 **Follow up:** Can you solve the problem in `O(log(n))` time complexity?
 
-<!-- ## Solution
+## Solution
 **Intuition and Approach:**
 
 The problem involves counting the number of positive and negative numbers in a sorted integer array. Here's how the two provided solutions tackle this:
@@ -426,7 +426,7 @@ The problem involves counting the number of positive and negative numbers in a s
 **Choosing the Right Approach:**
 
 - Use the brute force approach for small arrays or when a simple implementation is preferred.
-- Use the optimal approach for large arrays to take advantage of the logarithmic time complexity for efficient counting. -->
+- Use the optimal approach for large arrays to take advantage of the logarithmic time complexity for efficient counting.
 
 ## Question 4:
 Given an array of strings, group the anagrams together. You can return the answer in any order.
@@ -451,7 +451,7 @@ Input: strs = ["listen", "silent", "enlist", "inlets", "google", "goolge"]
 Output: [["listen", "silent", "enlist", "inlets"], ["google", "goolge"]]
 ```
 
-<!-- ## Solution
+## Solution
 
 **Intuition and Approach:**
 
@@ -526,4 +526,4 @@ The problem is to group anagrams from a list of strings. An anagram is a word fo
 **Choosing the Right Approach:**
 
 - The hashmap approach (`groupAnagrams1`) is more intuitive and straightforward, especially when dealing with large datasets.
-- The non-hashmap approach (`groupAnagrams2`) can be useful in environments where hashmaps are not available or preferred. -->
+- The non-hashmap approach (`groupAnagrams2`) can be useful in environments where hashmaps are not available or preferred.

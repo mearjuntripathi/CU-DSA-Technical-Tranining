@@ -24,7 +24,7 @@ Given an integer array nums, move all 0's to the end of it while maintaining the
 
 ***Follow up:** Could you minimize the total number of operations done?*
 
-<!-- ## Solution:
+## Solution:
 
 **Intuition and Approach:**
 
@@ -75,7 +75,7 @@ The problem involves rearranging an integer array such that all zeros are moved 
 
 - For small arrays, the difference in time complexity might be negligible.
 - For larger datasets, the optimal solution becomes significantly more efficient due to its lower space usage and avoiding extra copying.
-- If modifying the original array is not allowed, you might need to adapt the brute force approach to avoid overwriting. -->
+- If modifying the original array is not allowed, you might need to adapt the brute force approach to avoid overwriting.
 
 ## Question 2:
 Given an array nums of size , return the majority element.
@@ -101,7 +101,7 @@ The majority element is the element that appears more than `⌊n / 2⌋` times. 
 
 ***Follow-up:** Could you solve the problem in linear time and in `O(1)` space*
 
-<!-- ## Solution
+## Solution
 
 **Problem:** Given an array where a particular element appears more than half the times (majority element), find that element.
 
@@ -162,7 +162,7 @@ The majority element is the element that appears more than `⌊n / 2⌋` times. 
 
 * The optimal approach is generally preferred due to its lower time complexity, especially for larger datasets.
 * While the brute force approach might be simpler to understand, its sorting step makes it less efficient.
- -->
+
 
 ## Question 3: 
 
@@ -189,7 +189,7 @@ Given an integer array `nums` sorted in **non-decreasing** order, return an arra
 
 ***Follow up:** Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?*
 
-<!-- ## Solution
+## Solution
 
 **Intuition**
 
@@ -251,7 +251,7 @@ void moving_zeroes_optimal_solution(vector<int>& nums) {
 - **Brute Force Approach:** O(N). It creates a temporary array to store the non-zero elements, resulting in a space complexity of O(N).
 - **Optimal Solution Approach:** O(1). It modifies the original array in-place, without any additional space requirements.
 
-In conclusion, the optimal solution approach is preferred due to its lower time complexity and efficient space utilization. -->
+In conclusion, the optimal solution approach is preferred due to its lower time complexity and efficient space utilization.
 
 ## Question 4:
 
@@ -309,7 +309,7 @@ The task is to complete the function `arrange(arr, N)` which takes `arr` and `N`
 - `0 <= arr[i] < N`
 
 
-<!-- ## Solution
+## Solution
 
 **Intuition and Approach:**
 
@@ -361,7 +361,7 @@ The problem involves rearranging an integer array such that each element at inde
 
 - For small arrays, the difference in space complexity might be negligible.
 - For larger datasets, the optimal solution becomes significantly more efficient due to its lower space usage and avoiding extra copying.
-- If modifying the original array is not allowed, you might need to adapt the brute force approach to avoid overwriting. -->
+- If modifying the original array is not allowed, you might need to adapt the brute force approach to avoid overwriting.
 
 ## Question 5:
 
