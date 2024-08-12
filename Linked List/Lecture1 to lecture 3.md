@@ -22,6 +22,11 @@ Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,1]
 ```
 
+Example 4:
+```
+Input: l1 = [0, 2, 9], l2 = [5, 3, 9, 9, 1]
+Output: [5,5,0,2]
+```
 Constraints:
 
 - The number of nodes in each linked list is in the range [1, 100].
@@ -87,6 +92,11 @@ Input: head = [1]
 Output: -1
 ```
 
+Example 4:
+```
+Input: head = [1,2,3,4,5,6,7,8,9,10]
+Output: 3
+```
 Constraints:
 
 - The number of the nodes in the list is in the range [0, 104].
@@ -98,15 +108,12 @@ Constraints:
 
 You are given the head of a linked list.
 
-Remove every node which has a node with a greater value anywhere to the righ t/ left side of it.
+Remove every node which has a node with a greater value anywhere to the right side of it.
 take input as 0 for right and 1 for left from the user 
 
 Return the head of the modified linked list.
 
- 
-
 Example 1:
-
 
 Input: head = [5,2,13,3,8]
 Output: [13,8]
@@ -114,12 +121,17 @@ Explanation: The nodes that should be removed are 5, 2 and 3.
 - Node 13 is to the right of node 5.
 - Node 13 is to the right of node 2.
 - Node 8 is to the right of node 3.
+
 Example 2:
 
 Input: head = [1,1,1,1]
 Output: [1,1,1,1]
 Explanation: Every node has value 1, so no nodes are removed.
  
+Example 3:
+
+Input: head = [5,2,4,1,3,4,6,2,0,5]
+Output: [6,5]
 
 Constraints:
 
@@ -146,9 +158,13 @@ Example 2:
 Input: head = [0,1,0,3,0,2,2,0]
 Output: [1,3,4]
 ```
+Example 3:
+```
+Input: head = [0,5,1,9,3,0]
+Output: [18]
+```
 
 Constraints:
-
 - The number of nodes in the list is in the range [3, 2 * 105].
 - 0 <= Node.val <= 1000
 - There are no two consecutive nodes with Node.val == 0.
@@ -197,10 +213,22 @@ Remove last occurance of node having value k .
 
 Return the head of the modified linked list.
 
-Examples:  
+Examples 1:  
 ```
 Input:   1->2->3->5->2->10, key = 2
 Output:  1->2->3->5->10
+```
+
+Examples 2:  
+```
+Input:   5->5->5->5 key = 2
+Output:  5->5->5
+```
+
+Examples 3:  
+```
+Input:   3->5->9->8->7 key = 3
+Output:  5->9->8->7
 ```
 
 ## Question 8:[ Get the intersection point of two Linked Lists](https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/)
@@ -212,6 +240,16 @@ Example:
 Input:head1=[10,15,20], head2=[4,5,15,20]
 Output:15
 ```
+Example:
+```
+Input:head1=[10,15,20,5,8], head2=[8]
+Output:8
+```
+Example:
+```
+Input:head1=[10,15,20,5,8,6,7,8,4,8], head2=[8]
+Output:8 // middle 8
+```
 
 ## Question 9:[find pair with given sum in doubly linked list](https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/)
 
@@ -221,6 +259,11 @@ Example:
 ```
 Input : head : 1 <-> 2 <-> 4 <-> 5 <-> 6 <-> 8 <-> 9  ,  x = 7
 Output: (6, 1), (5,2)
+```
+Example:  
+```
+Input : head : -4 <-> -3<->-1<->0<->1<->2<->3<->5<->7  ,  x = 1
+Output: (-4, 5), (-1,2), (0,1)
 ```
 
 ## Question 10:[ Split circular linked list in two halves](https://www.geeksforgeeks.org/split-a-circular-linked-list-into-two-halves/)
