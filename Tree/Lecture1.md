@@ -190,7 +190,7 @@ Constraints:
 
 - 1 <= n <= 19
 
-## Question 9:[ Vertical Order Traversal](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/)
+## Question 9:[ Vertical Order Traversal](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/) please check this once.
 
 Given the root of a binary tree, calculate the vertical order traversal of the binary tree.
 
@@ -217,29 +217,16 @@ In this question, we are given a binary tree and we have to print all the nodes 
 
 Example
 ```
-Input
+Input: 8,3,10,1,6,null,14,null,null,4,6,13,null
+Output: 8,3,1,14,4,13
 
-![alt text](<Screenshot 2024-07-18 123456.png>)
- 
-
-Output:
-
-8
-
-3
-
-1 14
-
-4 13
 ```
-
-Like here in level 1 we can print 8 than in level 2 we will print 3 then we will not print next node that is 10 similarly in the third level we will print 1 then 14 leaving 6 and in the final level, we will print 4 and 13 leaving 7 because we have to print alternate nodes in every level
 
 
 **Special** [ Extreme nodes of each Level of bst](https://www.geeksforgeeks.org/print-extreme-nodes-of-each-level-of-binary-tree-in-alternate-order/)
 
 
-## Question 11:[ Construct Bst from Preorder Traversal,](https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/)[ Inorder Traversal, ](https://www.geeksforgeeks.org/construct-binary-tree-from-inorder-traversal/)[ Postorder Traversal](https://www.geeksforgeeks.org/construct-a-binary-search-tree-from-given-postorder/)
+## Question 11:[ Construct Bst from Preorder Traversal,](https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/)[ Inorder Traversal, ](https://www.geeksforgeeks.org/construct-binary-tree-from-inorder-traversal/)[ Postorder Traversal](https://www.geeksforgeeks.org/construct-a-binary-search-tree-from-given-postorder/) there is something missing in this que. please check this once?
 
 Given the input of either preorder or inorder or postorder traversal of a binary search tree, construct the BST.
 - if k=0 : Preoder Traversal
@@ -357,16 +344,12 @@ Given a Binary Search Tree (BST) and a range [min, max], remove all keys which a
 
 Examples:
 
-**Input :** 
-
-
+**Input :** range[-10,13]
 
 ![alt text](<Screenshot 2024-07-18 141406.png>)
 
 
 **Output:**
-
-
 
 ![alt text](<Screenshot 2024-07-18 141417.png>)
 
@@ -398,7 +381,7 @@ Constraints:
 - root is guaranteed to be a valid binary search tree.
 - -10^5 <= k <= 10^5
 
-## Question 19: [Sum Tree](https://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-sumtree/)
+## Question 19: [Sum Tree](https://www.geeksforgeeks.org/check-if-a-given-binary-tree-is-sumtree/) please check this que once?
 
 
 Write a function that returns true if the given Binary Tree is SumTree else false. A SumTree is a Binary Tree where the value of a node is equal to the sum of the nodes present in its left subtree and right subtree. An empty tree is SumTree and the sum of an empty tree can be considered as 0. A leaf node is also considered as SumTree.
