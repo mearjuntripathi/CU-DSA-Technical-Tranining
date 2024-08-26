@@ -190,7 +190,7 @@ Constraints:
 
 - 1 <= n <= 19
 
-## Question 9:[ Vertical Order Traversal](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/) please check this once.
+## Question 9:[ Vertical Order Traversal](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/).
 
 Given the root of a binary tree, calculate the vertical order traversal of the binary tree.
 
