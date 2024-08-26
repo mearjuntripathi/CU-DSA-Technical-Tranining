@@ -86,6 +86,10 @@ Write a function to print Unique order traversal of a binary tree.
 Input:root=[1,2,3,7,6,5,4]
 Output: ans=[1,3,2,7,6,5,4]
 ```
+```
+Input:root=[1,2,null,3,4,null,null,null,null,5,6]
+Output: ans=[1,2,3,4,5,6]
+```
 
 ## Question 5 : [ Largest Element in each level of Tree](https://www.geeksforgeeks.org/largest-value-level-binary-tree/)
 
@@ -103,6 +107,11 @@ Example 2:
 ```
 Input: root = [1,2,3]
 Output: [1,3]
+```
+Example 3:
+```
+Input: root = [1,2,3,4,4,2,3]
+Output: [1,3,4]
 ``` 
 
 Constraints:
@@ -110,7 +119,7 @@ Constraints:
 - The number of nodes in the tree will be in the range [0, 104].
 - -2^31 <= Node.val <= 2^31 - 1
 
-## Question 6: [ Maximum Gcd Of siblings of bst](https://www.naukri.com/code360/library/find-maximum-gcd-value-from-root-to-leaf-in-a-binary-tree)[ .](https://leetcode.com/discuss/interview-question/396996/Google-or-OA-Summer-Intern-2020-or-Greatest-Common-Divisor)
+## Question 6: [ Maximum Gcd Of siblings of bst](https://www.naukri.com/code360/library/find-maximum-gcd-value-from-root-to-leaf-in-a-binary-tree)[ .](https://leetcode.com/discuss/interview-question/396996/Google-or-OA-Summer-Intern-2020-or-Greatest-Common-Divisor) OUTPUT WRONG?
 
 - GCD (Greatest Common Divisor) of two positive integers is the largest positive integer that divides both numbers without a remainder.
 - Siblings: Nodes with the same parent are called siblings.
@@ -181,43 +190,22 @@ Constraints:
 
 - 1 <= n <= 19
 
-## Question 9:[ Vertical Order Traversal](https://www.naukri.com/code360/problems/vertical-order-traversal_920533)
+## Question 9:[ Vertical Order Traversal](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/)
 
-Given a binary tree, return the vertical order traversal of the values of the nodes of the given tree.
+Given the root of a binary tree, calculate the vertical order traversal of the binary tree.
 
-For each node at position (X, Y), (X-1, Y-1) will be its left child position while (X+1, Y-1) will be the right child position.
+For each node at position (row, col), its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively. The root of the tree is at (0, 0).
 
-Running a vertical line from X = -infinity to X = +infinity, now whenever this vertical line touches some nodes, we need to add those values of the nodes in order starting from top to bottom with the decreasing ‘Y’ coordinates.
+The vertical order traversal of a binary tree is a list of top-to-bottom orderings for each column index starting from the leftmost column and ending on the rightmost column. There may be multiple nodes in the same row and same column. In such a case, sort these nodes by their values.
 
-**Note:**
-If two nodes have the same position, then the value of the node that is added first will be the value that is on the left side.
-
-Constraints:
-- 1 <= 'T' <= 100
-- 0 <= 'N' <= 3000
-- 0 <= 'VAL' <= 10^5
-
-Where 'VAL' is the value of any binary tree node.
-
-Time Limit: 1 sec
-
+Return the vertical order traversal of the binary tree.
 ```
-Sample Input 1:
-2
-1 2 3 4 -1 -1 -1 -1 -1
-1 -1 2 -1 -1
-Sample Output 1:
-4 2 1 3 
-1 2 
+Input: root = [3,9,20,null,null,15,7]
+Output: [9,3,15,20,7]
 ```
-
-```Sample Input 2:
-2
-2 1 -1 -1 -1
-0 1 2 4 5 3 6 -1 -1 7 -1 -1 -1 -1 -1 -1 -1
-Sample Output 2:
-1 2
-4 1 7 0 5 3 2 6 
+```
+Input: root = [1,2,3,4,5,6,7]
+Output: [4,2,1,5,6,3,7]
 ```
 
 ## Question 10:[ Alternate nodes of each level of bst](https://www.naukri.com/code360/library/print-alternate-nodes-from-all-levels-of-a-binary-tree)
