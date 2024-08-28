@@ -1,6 +1,6 @@
 # Lecture 1
 
-## Que 1: [Path Sum](https://leetcode.com/problems/path-sum/description/)
+## [Que 1: ](https://leetcode.com/problems/path-sum/description/)
 Imagine you're exploring a forest, where each node represents a treehouse, and the root is your starting point. Each treehouse has a certain amount of treasure (node value). Your goal is to find a path from the starting treehouse (root) to any other treehouse that doesn't lead to another (leaf). You want to determine if there exists a path where the sum of the treasure collected exactly matches a specific amount (targetSum). If such a path exists, return true.
 ```
 Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetAmount = 22
@@ -12,7 +12,7 @@ Output: false
 ```
 A leaf is a node with no children.
 
-## Que 2: [Path Sum II](https://leetcode.com/problems/path-sum-ii/description/)
+## [Que 2: ](https://leetcode.com/problems/path-sum-ii/description/)
 Same as above but in this you have to return all possible ways to collect target amount. 
 
 ```
@@ -24,7 +24,7 @@ Input: root = [1,2,3], targetSum = 5
 Output: []
 ```
 
-## Que 3: [Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
+## [Que 3: ](https://leetcode.com/problems/binary-tree-level-order-traversal/description/)
 Imagine you are organizing a company-wide meeting. The CEO (root) is at the top level, followed by department heads (second level), then team leaders (third level), then employees (fourth level) at the bottom and so on.
 
 To collect feedback efficiently, you decide to visit each level of the organization one by one, starting from the CEO and moving level by level from left to right, gathering feedback from each person. The goal is to list everyone's feedback in the exact order you collected it, level by level..
@@ -101,7 +101,7 @@ Output: 15
 #### In constant space
 #### Try with recursion and in constant space 
 
-## Que 2: [All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/)
+##  [Que 2](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/)
 
 Imagine you are in a city where each intersection is a node, and the roads connecting them are like the branches of a tree. You start at a specific intersection (target node), and you want to find all the intersections that are exactly k blocks away from this starting point.
 
@@ -118,7 +118,7 @@ Output: []
 ```
 
 # Lecture 5
-## Que 1: [ Single Valued Subtree](https://www.geeksforgeeks.org/find-count-of-singly-subtrees/)
+## [ Que 1:](https://www.geeksforgeeks.org/find-count-of-singly-subtrees/)
 
 magine you are conducting a survey in a city with several neighborhoods. Each neighborhood can be seen as a group of houses (nodes in a subtree) connected by roads. Each house is painted in a particular color (node value).
 
