@@ -1,13 +1,31 @@
-## Question 1: [ Add two linked list & delete the middle element ](https://leetcode.com/problems/add-two-numbers/description/)
+# Lecture 1
 
-You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and delete the middle node of obtained list .If there are two middle nodes, delete the second middle node.
+## Question 1: Search an element 
+return true if element is present else false
+```
+input : 2->4->3->6->5 search 4
+output: true
+```
+## Question 2: Find the length of the linked list
+
+```
+input : 1->2->3->4->5
+output : 5
+```
+## Question 3: Insert and delete 
+
+## Question 4: [ Add two linked list & delete the middle element ](https://leetcode.com/problems/add-two-numbers/description/)
+
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
 
 Example 1:
 ```
 Input: l1 = [2,4,3], l2 = [5,6,4]
-Output: [7,8]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
 ```
 
 Example 2:
@@ -19,23 +37,43 @@ Output: []
 Example 3:
 ```
 Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-Output: [8,9,9,9,0,0,1]
+Output: [8,9,9,9,0,0,0,1]
 ```
 
-Example 4:
-```
-Input: l1 = [0, 2, 9], l2 = [5, 3, 9, 9, 1]
-Output: [5,5,0,2]
-```
 Constraints:
-
-- The number of nodes in each linked list is in the range [1, 100].
-- 0 <= Node.val <= 9
-- It is guaranteed that the list represents a number that does not have leading zeros.
-
-**Tricky Ques : Remove a Node given its address**
+-The number of nodes in each linked list is in the range [1, 100].
+-0 <= Node.val <= 9
+-It is guaranteed that the list represents a number that does not have leading zeros.
 
 
+# Lecture 2:
+
+## Question 1: [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+```
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+```
+```
+Input: head = [1,2]
+Output: [2,1]
+```
+## Question 2: [Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/description/)
+Given the head of a singly linked list, return the middle node of the linked list.
+
+If there are two middle nodes, return the second middle node.
+
+```
+Input: head = [1,2,3,4,5]
+Output: [3,4,5]
+Explanation: The middle node of the list is node 3.
+```
+```
+Input: head = [1,2,3,4,5,6]
+Output: [4,5,6]
+Explanation: Since the list has two middle nodes with values 3 and 4, we return the second one.
+```
 ## Question 2: [Reverse Linked List from left to right and at each interval of k ](https://leetcode.com/problems/reverse-nodes-in-k-group/description/)
 
 Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right,  k at a time, and return the modified list.
