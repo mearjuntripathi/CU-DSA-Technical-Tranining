@@ -65,3 +65,153 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         return slowPointer;
     }
 ```
+
+# Lecture 3
+## Sol 1:
+```
+
+bool hasCycle(ListNode *head) {
+        if(head == NULL){
+            return false;
+        }
+
+        if(head->val == INT_MAX){
+            return true;
+        }
+
+        head->val=INT_MAX;
+        return hasCycle(head->next);
+    }
+
+```
+## sol 2
+```
+int findLength(Node* slow, Node* fast){
+    int cnt = 1;
+    fast = fast->next;
+    while(slow!=fast){
+        cnt++;
+        fast = fast->next;
+    }
+    return cnt;
+}
+
+int lengthOfLoop(Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;     
+        fast = fast->next->next;
+        if (slow == fast) {
+            return findLength(slow, fast);
+        }
+    }
+
+    // Step 3: If the fast pointer
+    // reaches the end, there is no loop
+    return 0; 
+}
+```
+## sol 3
+```
+ListNode *detectCycle(ListNode *head) {
+    if (head == NULL || head->next == NULL)
+        return NULL;
+    
+    ListNode *slow  = head;
+    ListNode *fast  = head;
+    ListNode *entry = head;
+    
+    while (fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) {                      
+            while(slow != entry) {               
+                slow  = slow->next;
+                entry = entry->next;
+            }
+            return entry;
+        }
+    }
+    return NULL;      
+    }
+```
+# lecture 4
+## sol 1
+```
+void pairSum(struct Node *head, int x)  
+{  
+    // Set two pointers, first to the beginning of DLL  
+    // and second to the end of DLL.  
+    struct Node *first = head;  
+    struct Node *second = head;  
+    while (second->next != NULL)  
+        second = second->next;  
+  
+    // To track if we find a pair or not  
+    bool found = false;  
+  
+    // The loop terminates when two pointers  
+    // cross each other (second->next  
+    // == first), or they become same (first == second)  
+    while (first != second && second->next != first)  
+    {  
+        // pair found  
+        if ((first->data + second->data) == x)  
+        {  
+            found = true;  
+            cout << "(" << first->data<< ", "
+                << second->data << ")" << endl;  
+  
+            // move first in forward direction  
+            first = first->next;  
+  
+            // move second in backward direction  
+            second = second->prev;  
+        }  
+        else
+        {  
+            if ((first->data + second->data) < x)  
+                first = first->next;  
+            else
+                second = second->prev;  
+        }  
+    }  
+  
+    // if pair is not present  
+    if (found == false)  
+        cout << "No pair found";  
+}
+```
+## sol 2
+```
+ListNode* reverse(ListNode* head,int k,int len){
+        if(k>len){
+            return head;
+        }
+        int x=k;
+        cout<<len<<endl;
+        ListNode* temp=head;
+        ListNode* join=head;
+        ListNode* next=NULL;
+        ListNode* prev=NULL;
+        while(x>0){
+            next=temp->next;
+            temp->next=prev;
+            prev=temp;
+            temp=next;
+            x--;
+        }
+        join->next=reverse(next,k,len-k);
+        return prev;
+    }
+    ListNode* reverseKGroup(ListNode* head, int k) {
+         int len=0;
+         ListNode* temp=head;
+         while(temp!=NULL){
+             len++;
+             temp=temp->next;
+         }
+         return reverse(head,k,len);
+    }```
