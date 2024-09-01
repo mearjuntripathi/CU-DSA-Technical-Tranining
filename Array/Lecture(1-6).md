@@ -1,4 +1,4 @@
-# Lecture 1(2 hrs--Theory+Problems)
+# Lecture 1(2 hrs)
 
 Problems on topics:
 - Basics array
@@ -355,96 +355,7 @@ The problem involves searching for a target value in a rotated sorted integer ar
 - Use linear search for small or unsorted arrays where the overhead of sorting or maintaining a sorted array is not justified.
 - Use rotational binary search for large, rotated sorted arrays where the target value can be quickly found due to the logarithmic time complexity.
 
-## Question 4: 
-
-Given an integer array `nums` sorted in **non-decreasing** order, return an array of **the squares of each number** sorted in *non-decreasing order*.
-
-
-**Example 1:**<br>
-> **Input:** nums = [-4,-1,0,3,10]<br>
-> **Output:** [0,1,9,16,100]<br>
-> **Explanation:** After squaring, the array becomes [16,1,0,9,100].
->
-> After sorting, it becomes [0,1,9,16,100].
-
-**Example 2:**<br>
-> **Input:** nums = [-7,-3,2,3,11]<br>
-> **Output:** [4,9,9,49,121]
- 
-
-**Constraints:**
-
-> `1 <= nums.length <= 1e4`<br>
-> `-1e4 <= nums[i] <= 1e4`<br>
-> `nums` is sorted in non-decreasing order.
-
-***Follow up:** Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?*
-
-## Solution
-
-**Intuition**
-
-The problem aims to rearrange a given array where all the zero elements are moved to the end of the array. Here, two approaches are presented:
-
-1. **Brute Force Approach:**
-   - It creates a temporary array `temp` to store the non-zero elements.
-   - It iterates through the original array and adds all the non-zero elements to the `temp` array.
-   - After iterating through the original array, it adds the required number of zeros to the end of the `temp` array. (The number of zeros is equal to the number of zeros encountered in the original array).
-   - Finally, it replaces the original array with the `temp` array.
-
-2. **Optimal Solution Approach:**
-   - It utilizes a two-pointer approach to achieve the in-place modification of the original array.
-   - It maintains a write index (`write_idx`) that points to the position where the next non-zero element should be placed.
-   - It iterates through the original array using a read index (`read_idx`).
-   - If the element at the current `read_idx` is non-zero, it places that element at the `write_idx` position and increments both the `write_idx` and `read_idx`.
-   - After iterating through the entire array, all the remaining positions starting from `write_idx` are filled with zeros.
-
-**Pseudo Code**
-
-```cpp
-// Brute Force Approach
-void moving_zeroes_brute_force(vector<int>& nums) {
-  vector<int> temp;
-  for (int num : nums) {
-    if (num != 0) {
-      temp.push_back(num);
-    }
-  }
-  int zeros = nums.size() - temp.size();
-  for (int i = 0; i < zeros; ++i) {
-    temp.push_back(0);
-  }
-  nums = temp;
-}
-
-// Optimal Solution Approach
-void moving_zeroes_optimal_solution(vector<int>& nums) {
-  int write_idx = 0;
-  for (int read_idx = 0; read_idx < nums.size(); ++read_idx) {
-    if (nums[read_idx] != 0) {
-      nums[write_idx] = nums[read_idx];
-      write_idx++;
-    }
-  }
-  for (int i = write_idx; i < nums.size(); ++i) {
-    nums[i] = 0;
-  }
-}
-```
-
-**Time Complexity**
-
-- **Brute Force Approach:** O(N^2). In the worst case, it iterates twice through the entire array, resulting in a time complexity of O(N^2).
-- **Optimal Solution Approach:** O(N). It iterates through the array only once, leading to a time complexity of O(N).
-
-**Space Complexity**
-
-- **Brute Force Approach:** O(N). It creates a temporary array to store the non-zero elements, resulting in a space complexity of O(N).
-- **Optimal Solution Approach:** O(1). It modifies the original array in-place, without any additional space requirements.
-
-In conclusion, the optimal solution approach is preferred due to its lower time complexity and efficient space utilization.
-
-## Question 5: Rearrange Array
+## Question 4: Rearrange Array
 
 Given an array `arr[]` of size `N` where every element is in the range from 0 to `N-1`, rearrange the given array so that the transformed array `arr^T[i]` becomes `arr[arr[i]]`.
 
@@ -552,7 +463,7 @@ The problem involves rearranging an integer array such that each element at inde
 - For larger datasets, the optimal solution becomes significantly more efficient due to its lower space usage and avoiding extra copying.
 - If modifying the original array is not allowed, you might need to adapt the brute force approach to avoid overwriting.
 
-## Question 6:
+## Question 5:
 
 Once upon a time in a faraway kingdom, there was a legendary treasure hidden deep in the enchanted forest. The treasure was protected by a series of mystical clues, each represented as an array of numbers. The brave adventurers who wished to find the treasure had to decode these arrays to discover the hidden message that would lead them to the treasure.
 
@@ -995,7 +906,7 @@ FUNCTION mergeKSortedArrays(kArrays, k):
 - **Space Complexity**:
   - The space complexity is \(O(N)\) due to the additional space needed to store the merged result.
 
-## Question 2: (https://leetcode.com/problems/fibonacci-number/description/)
+## [Question 2:](https://leetcode.com/problems/fibonacci-number/description/)
 
 Problem Statement
 Given an array of integers nums, sort the array in ascending order and return it.
