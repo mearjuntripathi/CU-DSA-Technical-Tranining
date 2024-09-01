@@ -1,4 +1,4 @@
-# Lecture Day 1
+# Lecture 1(2 hrs--Theory+Problems)
 
 Problems on topics:
 - Basics array
@@ -167,9 +167,195 @@ The majority element is the element that appears more than `⌊n / 2⌋` times. 
 * The optimal approach is generally preferred due to its lower time complexity, especially for larger datasets.
 * While the brute force approach might be simpler to understand, its sorting step makes it less efficient.
 
+## Question 3a: 
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+Example 1:
+```
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+Explanation: 9 exists in nums and its index is 4
+```
+
+Example 2:
+```
+Input: nums = [-1,0,3,5,9,12], target = 2
+Output: -1
+Explanation: 2 does not exist in nums so return -1
+```
+
+Constraints:
+
+- `1 <= nums.length <= 10e4`
+- `-1e4 < nums[i], target < 1e4`
+- All the integers in `nums` are unique.
+- `nums` is sorted in ascending order
+
+**Follow up:** Can you solve the problem in `O(log(n))` time complexity?
+
+## Solution 
+
+**Intuition and Approach:**
+
+The problem involves searching for a target value in a sorted integer array. Here's how the two provided solutions tackle this:
+
+**1. Linear Search (`linear_search`):**
+
+   - **Intuition:** This method iterates through the array from the beginning to the end, checking each element against the target value. It returns the index of the target value if found, otherwise returns -1.
+   - **Approach:**
+      ```
+      FUNCTION linear_search(arr, size, target)
+         FOR i FROM 0 TO size - 1
+            IF arr[i] == target
+               RETURN i
+            END IF
+         END FOR
+         RETURN -1  // Target not found
+      END FUNCTION
+      ```
+
+**2. Binary Search (`binary_search`):**
+
+   - **Intuition:** This method leverages the fact that the array is sorted. It repeatedly divides the search interval in half, comparing the middle element with the target value. Depending on the comparison, it eliminates half of the remaining elements from consideration.
+   - **Approach:**
+      ```
+      FUNCTION binary_search(arr, size, target)
+         left = 0
+         right = size - 1
+         WHILE left <= right
+            mid = left + (right - left) / 2
+            IF arr[mid] == target
+               RETURN mid
+            ELSE IF arr[mid] > target
+               right = mid - 1
+            ELSE
+               left = mid + 1
+            END IF
+         END WHILE
+         RETURN -1  // Target not found
+      END FUNCTION
+      ```
+
+**Key Differences and Considerations:**
+
+- **Time Complexity:**
+   - Linear Search: `O(n)` due to iterating through each element of the array.
+   - Binary Search: `O(log n)` due to repeatedly dividing the search interval in half.
+
+- **Space Complexity:**
+   - Both solutions: `O(1)` as they only use a few extra variables for tracking indices and comparisons.
+
+**Choosing the Right Approach:**
+
+- Use linear search for small or unsorted arrays where the overhead of sorting or maintaining a sorted array is not justified.
+- Use binary search for large, sorted arrays where the target value can be quickly found due to the logarithmic time complexity.
 
 
-## Question 3: 
+## Question 3b: 
+There is an integer array `nums` sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, `nums` is possibly rotated at an unknown pivot index `k` (`1 <= k < nums.length`) such that the resulting array is `[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]` **(0-indexed)**. For example, `[0,1,2,4,5,6,7]` might be rotated at pivot index `3` and become `[4,5,6,7,0,1,2]`.
+
+Given the array `nums` after the possible rotation and an integer `target`, return the index of `target` if it is in `nums`, or `-1` if it is not in `nums`.
+
+You must write an algorithm with `O(log n)` runtime complexity.
+
+**Example 1:**
+```
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+```
+**Example 2:**
+```
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+```
+**Example 3:**
+```
+Input: nums = [1], target = 0
+Output: -1
+```
+**Constraints:**
+
+- `1 <= nums.length <= 5000`
+- `-1e4 <= nums[i] <= 1e4`
+- All values of `nums` are unique.
+- `nums` is an ascending array that is possibly rotated.
+- `-1e4 <= target <= 1e4`
+
+**Follow up:** Can you solve the problem in `O(log(n))` time complexity?
+
+## Solution 
+**Intuition and Approach:**
+
+The problem involves searching for a target value in a rotated sorted integer array. Here's how the two provided solutions tackle this:
+
+**1. Linear Search (`linear_search`):**
+
+   - **Intuition:** This method iterates through the array from the beginning to the end, checking each element against the target value. It returns the index of the target value if found, otherwise returns -1.
+   - **Approach:**
+      ```
+      FUNCTION linear_search(arr, size, target)
+         FOR i FROM 0 TO size - 1
+            IF arr[i] == target
+               RETURN i
+            END IF
+         END FOR
+         RETURN -1  // Target not found
+      END FUNCTION
+      ```
+
+**2. Rotational Binary Search (`rotational_binary_search`):**
+
+   - **Intuition:** This approach leverages the fact that the array is a rotated sorted array. It modifies the traditional binary search to handle the rotation by checking which half of the array is properly sorted and adjusting the search interval accordingly.
+   - **Approach:**
+      ```
+      FUNCTION rotational_binary_search(arr, size, target)
+         left = 0
+         right = size - 1
+         WHILE left <= right
+            mid = left + (right - left) / 2
+            IF arr[mid] == target
+               RETURN mid
+            END IF
+            // Determine which part of the array is sorted
+            IF arr[left] <= arr[mid]
+               // Left part is sorted
+               IF arr[left] <= target AND target < arr[mid]
+                  right = mid - 1
+               ELSE
+                  left = mid + 1
+               END IF
+            ELSE
+               // Right part is sorted
+               IF arr[mid] < target AND target <= arr[right]
+                  left = mid + 1
+               ELSE
+                  right = mid - 1
+               END IF
+            END IF
+         END WHILE
+         RETURN -1  // Target not found
+      END FUNCTION
+      ```
+
+**Key Differences and Considerations:**
+
+- **Time Complexity:**
+   - Linear Search: `O(n)` due to iterating through each element of the array.
+   - Rotational Binary Search: `O(log n)` due to repeatedly dividing the search interval in half and handling the rotation.
+
+- **Space Complexity:**
+   - Both solutions: `O(1)` as they only use a few extra variables for tracking indices and comparisons.
+
+**Choosing the Right Approach:**
+
+- Use linear search for small or unsorted arrays where the overhead of sorting or maintaining a sorted array is not justified.
+- Use rotational binary search for large, rotated sorted arrays where the target value can be quickly found due to the logarithmic time complexity.
+
+## Question 4: 
 
 Given an integer array `nums` sorted in **non-decreasing** order, return an array of **the squares of each number** sorted in *non-decreasing order*.
 
@@ -258,9 +444,7 @@ void moving_zeroes_optimal_solution(vector<int>& nums) {
 
 In conclusion, the optimal solution approach is preferred due to its lower time complexity and efficient space utilization.
 
-## Question 4:
-
-## Question 4: Rearrange Array
+## Question 5: Rearrange Array
 
 Given an array `arr[]` of size `N` where every element is in the range from 0 to `N-1`, rearrange the given array so that the transformed array `arr^T[i]` becomes `arr[arr[i]]`.
 
@@ -368,7 +552,7 @@ The problem involves rearranging an integer array such that each element at inde
 - For larger datasets, the optimal solution becomes significantly more efficient due to its lower space usage and avoiding extra copying.
 - If modifying the original array is not allowed, you might need to adapt the brute force approach to avoid overwriting.
 
-## Question 5:
+## Question 6:
 
 Once upon a time in a faraway kingdom, there was a legendary treasure hidden deep in the enchanted forest. The treasure was protected by a series of mystical clues, each represented as an array of numbers. The brave adventurers who wished to find the treasure had to decode these arrays to discover the hidden message that would lead them to the treasure.
 
