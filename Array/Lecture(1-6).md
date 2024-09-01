@@ -863,3 +863,134 @@ END FUNCTION
 - Selection Sort, Bubble Sort, Insertion Sort, Merge Sort, Quick Sort
 
 ## Question 1
+
+Problem statement
+You have been given ‘K’ different arrays/lists, which are sorted individually (in ascending order). You need to merge all the given arrays/list such that the output array/list should be sorted in ascending order.
+
+[Solve this Problem](https://www.naukri.com/code360/problems/merge-k-sorted-arrays_975379)
+
+**Constraints :**
+- 1 <= K <= 5
+- 1 <= N <= 20
+- -10^5 <= DATA <= 10^5
+
+Time Limit: 1 sec 
+```
+Sample Input 1:
+2
+3 
+3 5 9 
+4 
+1 2 3 8   
+
+Sample Output 1:
+1 2 3 3 5 8 9 
+
+Explanation of Sample Input 1:
+After merging the two given arrays/lists [3, 5, 9] and [ 1, 2, 3, 8], the output sorted array will be [1, 2, 3, 3, 5, 8, 9].
+
+Sample Input 2:
+4
+3
+1 5 9
+2
+45 90
+5
+2 6 78 100 234
+1
+0
+
+Sample Output 2:
+0 1 2 5 6 9 45 78 90 100 234
+Explanation of Sample Input 2 :
+After merging the given arrays/lists [1, 5, 9], [45, 90], [2, 6, 78, 100, 234] and [0], the output sorted array will be [0, 1, 2, 5, 6, 9, 45, 78, 90, 100, 234].
+```
+
+## Solution
+
+### Intuition and Approach
+
+The task is to merge `k` sorted arrays into a single sorted array. This problem can be broken down into two main steps:
+
+1. **Merge Two Sorted Arrays**: Develop a function to merge two sorted arrays into one sorted array.
+2. **Merge Multiple Sorted Arrays**: Utilize the function from step 1 to iteratively merge all `k` sorted arrays into a single sorted array.
+
+### Intuition
+
+1. **Merging Two Sorted Arrays**:
+   - Use a two-pointer technique to merge two sorted arrays into a single sorted array. This involves comparing the current elements of both arrays and adding the smaller element to the result array until one of the arrays is exhausted.
+   - After one array is exhausted, append the remaining elements of the other array to the result.
+
+2. **Merging Multiple Sorted Arrays**:
+   - Start with the first array as the initial result.
+   - Iteratively merge this result with each of the remaining `k-1` arrays using the function from step 1.
+   - This iterative approach ensures that at each step, the arrays being merged are already sorted.
+
+### Approach
+
+1. **Merge Function**:
+   - Initialize pointers for both input arrays.
+   - Compare the current elements from both arrays and add the smaller one to the result.
+   - Continue until all elements from both arrays are processed.
+
+2. **Merge k Sorted Arrays**:
+   - Initialize the result with the first array.
+   - Use the merge function to iteratively merge this result with the next array.
+   - Continue until all `k` arrays are merged.
+
+### Pseudo Code
+
+**Merge Two Sorted Arrays**:
+
+```plaintext
+FUNCTION merge(array1, array2):
+    Initialize pointers i = 0 and j = 0
+    Initialize an empty result array
+
+    WHILE i < LENGTH(array1) AND j < LENGTH(array2):
+        IF array1[i] < array2[j]:
+            Append array1[i] to result
+            Increment i
+        ELSE:
+            Append array2[j] to result
+            Increment j
+
+    WHILE i < LENGTH(array1):
+        Append array1[i] to result
+        Increment i
+
+    WHILE j < LENGTH(array2):
+        Append array2[j] to result
+        Increment j
+
+    RETURN result
+```
+
+**Merge k Sorted Arrays**:
+
+```plaintext
+FUNCTION mergeKSortedArrays(kArrays, k):
+    Initialize temp with kArrays[0]
+
+    FOR i FROM 1 TO k-1:
+        temp = merge(temp, kArrays[i])
+
+    RETURN temp
+```
+
+### Explanation
+
+- **Merge Function**:
+  - This function efficiently merges two sorted arrays into one sorted array using a two-pointer technique. It handles the merging in linear time relative to the size of the input arrays.
+
+- **Merge k Sorted Arrays**:
+  - This function leverages the merge function to combine multiple sorted arrays. By iteratively merging each array with the accumulated result, it ensures that the final result is sorted.
+
+### Complexity
+
+- **Time Complexity**:
+  - Merging two arrays: \(O(n_1 + n_2)\), where \(n_1\) and \(n_2\) are the sizes of the two arrays.
+  - Merging `k` arrays: Each merge operation involves merging arrays of increasing size, leading to a total time complexity of \(O(N \log k)\), where \(N\) is the total number of elements across all arrays.
+
+- **Space Complexity**:
+  - The space complexity is \(O(N)\) due to the additional space needed to store the merged result.
