@@ -288,8 +288,6 @@ The problem is to group anagrams from a list of strings. An anagram is a word fo
 - The hashmap approach (`groupAnagrams1`) is more intuitive and straightforward, especially when dealing with large datasets.
 - The non-hashmap approach (`groupAnagrams2`) can be useful in environments where hashmaps are not available or preferred.
 
-## Home Assignments
-
 ## Question 3: 
 Given an integer array `nums`, find a peak element. A peak element is an element that is not smaller than its neighbors. If the array contains multiple peaks, return the index to any one of the peaks.
 
