@@ -1,70 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-pair<int,int> bruteForce_sum_neg(vector<int> &nums) {
-    int pos = 0, neg = 0;
-    for(int num : nums) {
-        if(num > 0) pos++;
-        if(num < 0) neg++;
-    }
-    return {pos, neg};
+int bruteForce_peak_element(vector<int> &nums){
+   int length = nums.size();
+
+        int max = nums[0],res =0;
+        for(int i=1;i<length;i++){
+            if(max < nums[i]){
+                max = nums[i];
+                res = i;
+            }
+        }
+        return res;
 }
 
-pair<int,int> optimal_sum_neg(vector<int> &nums) {
-    int size = nums.size();
-    
-    if (nums[0] > 0) return {size, 0};  
-    if (nums[size - 1] < 0) return {0, size};  
-    if (nums[0] == 0 && nums[size - 1] == 0) return {0, 0}; 
-    
-    int lastNeg = -1;
-    int firstPos = size;
-    
-    int left = 0, right = size - 1;
-    
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] < 0) {
-            if (mid + 1 < size && nums[mid + 1] >= 0) {
-                lastNeg = mid;
-                break;
-            }
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-    
-    left = 0, right = size - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] > 0) {
-            if (mid - 1 >= 0 && nums[mid - 1] <= 0) {
-                firstPos = mid;
-                break;
-            }
-            right = mid - 1;
-        } else {
-            left = mid + 1;
-        }
-    }
-    
-    int posCount = size - firstPos;
-    int negCount = lastNeg + 1;
-    
-    return {posCount, negCount};
-}
+int optimal_peak_element(vector<int> &nums){
+    int low = 0;
+    int high = nums.size()-1;
 
+    if(high == 0) return low;
+    if(nums[low] > nums[low+1]) return low;
+    if(nums[high] > nums[high-1]) return high;
+    low++;
+    high--;
+    while(low <= high){
+        int mid = (high + low)/2;
+
+        if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) 
+            return mid;
+        
+        if(nums[mid] > nums[mid-1]){
+            low = mid+1;
+        }else high = mid-1;
+    }
+    return -1;
+}
 
 int main() {
-    vector<int> nums = {-2, -1, -1,0,0, 1, 2, 3,4,5};
-    pair<int, int> data_nums = bruteForce_sum_neg(nums);
-    cout << "max positive: " << data_nums.first << endl;
-    cout << "max negative: " << data_nums.second << endl;
+    vector<int> nums = {1, 2, 1, 3, 5, 6, 4};
 
-    data_nums = optimal_sum_neg(nums);
-    cout << "max positive: " << data_nums.first << endl;
-    cout << "max negative: " << data_nums.second << endl;
-
+    // brute force
+    cout << "Peak element in nums: " << bruteForce_peak_element(nums) << endl;
+    // optimal 
+    cout << "Peak element in nums: " << optimal_peak_element(nums) << endl;
     return 0;
 }
