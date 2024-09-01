@@ -660,7 +660,7 @@ The problem involves finding the maximum sum of a contiguous subarray within a g
 - For small arrays, the brute force approach may be sufficient.
 - For larger arrays, the optimal solution (Kadane's algorithm) is significantly more efficient due to its linear time complexity.
 
-## Lecture 2(1 hr)
+# Lecture 2(1 hr)
 
 - Strings(array of characters)
 - Problems on Strings
@@ -857,7 +857,7 @@ FUNCTION isRotationOptimal(s1, s2):
 END FUNCTION
 ``` -->
 
-## Lecture 3(2 hrs)
+# Lecture 3(2 hrs)
 
 - Sorting algorithms and Problems
 - Selection Sort, Bubble Sort, Insertion Sort, Merge Sort, Quick Sort
@@ -995,7 +995,7 @@ FUNCTION mergeKSortedArrays(kArrays, k):
 - **Space Complexity**:
   - The space complexity is \(O(N)\) due to the additional space needed to store the merged result.
  
-## Lecture 4(1hr)
+# Lecture 4(1hr)
 
 - DP(Dynamic Programming Problems)
 
