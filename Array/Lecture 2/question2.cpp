@@ -1,47 +1,76 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int bruteForce_peak_element(vector<int> &nums){
-   int length = nums.size();
+// with Hashmap
+vector<vector<string>> groupAnagrams1(vector<string>& strs) {
+    unordered_map<string, vector<string>> anagramMap;
 
-        int max = nums[0],res =0;
-        for(int i=1;i<length;i++){
-            if(max < nums[i]){
-                max = nums[i];
-                res = i;
-            }
-        }
-        return res;
+    for (const string& str : strs) {
+        string sortedStr = str;
+        sort(sortedStr.begin(), sortedStr.end());
+        anagramMap[sortedStr].push_back(str);
+    }
+
+    vector<vector<string>> result;
+    for (auto& pair : anagramMap) {
+        result.push_back(pair.second);
+    }
+
+    return result;
 }
 
-int optimal_peak_element(vector<int> &nums){
-    int low = 0;
-    int high = nums.size()-1;
+// without hashmap
+// Function to group anagrams
+vector<vector<string>> groupAnagrams2(vector<string>& strs) {
+    vector<pair<string, string>> sortedStrs; 
 
-    if(high == 0) return low;
-    if(nums[low] > nums[low+1]) return low;
-    if(nums[high] > nums[high-1]) return high;
-    low++;
-    high--;
-    while(low <= high){
-        int mid = (high + low)/2;
-
-        if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) 
-            return mid;
-        
-        if(nums[mid] > nums[mid-1]){
-            low = mid+1;
-        }else high = mid-1;
+    for (const string& str : strs) {
+        string sortedStr = str;
+        sort(sortedStr.begin(), sortedStr.end());
+        sortedStrs.push_back({sortedStr, str});
     }
-    return -1;
+
+    sort(sortedStrs.begin(), sortedStrs.end());
+
+    vector<vector<string>> result;
+    vector<string> currentGroup;
+    string currentKey = sortedStrs[0].first;
+    for (const auto& p : sortedStrs) {
+        if (p.first == currentKey) {
+            currentGroup.push_back(p.second);
+        } else {
+            result.push_back(currentGroup);
+            currentGroup = {p.second};
+            currentKey = p.first;
+        }
+    }
+    result.push_back(currentGroup); 
+    return result;
 }
 
 int main() {
-    vector<int> nums = {1, 2, 1, 3, 5, 6, 4};
+    vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+    vector<vector<string>> result = groupAnagrams1(strs);
 
-    // brute force
-    cout << "Peak element in nums: " << bruteForce_peak_element(nums) << endl;
-    // optimal 
-    cout << "Peak element in nums: " << optimal_peak_element(nums) << endl;
+    for (const auto& group : result) {
+        cout << "[";
+        for (const auto& str : group) {
+            cout << "\"" << str << "\", ";
+        }
+        cout << "], ";
+    }
+    cout << endl;
+
+    result = groupAnagrams2(strs);
+
+    for (const auto& group : result) {
+        cout << "[";
+        for (const auto& str : group) {
+            cout << "\"" << str << "\", ";
+        }
+        cout << "], ";
+    }
+    cout << endl;
+
     return 0;
 }
