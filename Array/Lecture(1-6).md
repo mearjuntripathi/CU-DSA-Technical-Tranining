@@ -659,3 +659,108 @@ The problem involves finding the maximum sum of a contiguous subarray within a g
 
 - For small arrays, the brute force approach may be sufficient.
 - For larger arrays, the optimal solution (Kadane's algorithm) is significantly more efficient due to its linear time complexity.
+
+## Lecture 2(1 hr)
+
+- Strings(array of characters)
+- Problems on Strings
+
+## Question 1:
+Given an array of strings, group the anagrams together. You can return the answer in any order.
+
+**Input:**
+- An array of strings `strs` 
+- where `1 <= len(strs) <= 1e5`
+- each string `s` where `1 <= len(s) <= 100`.
+
+**Output:**
+- A list of lists, where each sublist contains strings that are anagrams of each other.
+
+**Example 1:**
+```
+Input: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+Output: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+```
+
+**Example 2:**
+```
+Input: strs = ["listen", "silent", "enlist", "inlets", "google", "goolge"]
+Output: [["listen", "silent", "enlist", "inlets"], ["google", "goolge"]]
+```
+
+## Solution
+
+**Intuition and Approach:**
+
+The problem is to group anagrams from a list of strings. An anagram is a word formed by rearranging the letters of another word. Here's how the two provided solutions tackle this problem:
+
+**1. Using Hashmap (`groupAnagrams1`):**
+
+   - **Intuition:** By sorting each string, we can use the sorted string as a key to group anagrams together.
+   - **Approach:**
+      ```
+      FUNCTION groupAnagrams1(strs)
+         DECLARE anagramMap as a hashmap
+
+         FOR each str IN strs
+            sortedStr = SORTED str
+            anagramMap[sortedStr].ADD str
+         END FOR
+
+         DECLARE result as an empty list
+         FOR each pair IN anagramMap
+            ADD pair.second to result
+         END FOR
+
+         RETURN result
+      END FUNCTION
+      ```
+
+**2. Without Using Hashmap (`groupAnagrams2`):**
+
+   - **Intuition:** By sorting each string and maintaining both the original and sorted versions, we can sort this list and then group anagrams based on the sorted strings.
+   - **Approach:**
+      ```
+      FUNCTION groupAnagrams2(strs)
+         DECLARE sortedStrs as an empty list
+
+         FOR each str IN strs
+            sortedStr = SORTED str
+            ADD (sortedStr, str) to sortedStrs
+         END FOR
+
+         SORT sortedStrs based on the first element of each pair
+
+         DECLARE result as an empty list
+         DECLARE currentGroup as an empty list
+         currentKey = first element of the first pair in sortedStrs
+
+         FOR each pair IN sortedStrs
+            IF pair.first EQUALS currentKey
+               ADD pair.second to currentGroup
+            ELSE
+               ADD currentGroup to result
+               currentGroup = [pair.second]
+               currentKey = pair.first
+            END IF
+         END FOR
+
+         ADD currentGroup to result
+         RETURN result
+      END FUNCTION
+      ```
+
+**Key Differences and Considerations:**
+
+- **Time Complexity:**
+   - Using Hashmap: Sorting each string takes `O(k log k)` where `k` is the length of the string. The overall complexity is `O(n k log k)` where `n` is the number of strings.
+   - Without Hashmap: Similar sorting complexity `O(n k log k)` but includes additional sorting of the pairs `O(n log n)`.
+
+- **Space Complexity:**
+   - Using Hashmap: `O(n k)` due to the hashmap storing all strings.
+   - Without Hashmap: `O(n k)` due to the list of pairs.
+
+**Choosing the Right Approach:**
+
+- The hashmap approach (`groupAnagrams1`) is more intuitive and straightforward, especially when dealing with large datasets.
+- The non-hashmap approach (`groupAnagrams2`) can be useful in environments where hashmaps are not available or preferred.
