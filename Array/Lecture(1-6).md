@@ -764,3 +764,102 @@ The problem is to group anagrams from a list of strings. An anagram is a word fo
 
 - The hashmap approach (`groupAnagrams1`) is more intuitive and straightforward, especially when dealing with large datasets.
 - The non-hashmap approach (`groupAnagrams2`) can be useful in environments where hashmaps are not available or preferred.
+
+## Question 2:
+Assume you have a method `isSubstring` which checks if one word is a substring of another. Given two strings, `s1` and `s2`, write an algorithm to check if `s2` is a rotation of `s1` using only one call to `isSubstring`. For example, "waterbottle" is a rotation of "erbottlewat".
+
+**Input:**
+- Two strings `s1` and `s2` where `1 <= len(s1), len(s2) <= 1000`.
+
+**Output:**
+- A boolean value `True` or `False` indicating whether `s2` is a rotation of `s1`.
+
+**Example 1:**
+```
+Input: s1 = "waterbottle", s2 = "erbottlewat"
+Output: True
+```
+
+**Example 2:**
+```
+Input: s1 = "hello", s2 = "llohe"
+Output: True
+```
+
+**Example 3:**
+```
+Input: s1 = "hello", s2 = "lleho"
+Output: False
+```
+
+<!-- ## Solution
+
+### Intuition and Approach:
+
+#### Brute Force Approach:
+
+**Intuition:**
+To determine if one string is a rotation of another, the brute force method involves checking all possible rotations of the first string to see if any of them match the second string. This involves iterating through all possible starting points of the first string and comparing characters in a cyclic manner.
+
+**Approach:**
+1. Check if the lengths of the two strings are equal. If not, return `false`.
+2. Iterate over each character in the first string as the starting point.
+3. For each starting point, compare the characters of the first string (in a cyclic manner) with the characters of the second string.
+4. If a match is found, return `true`.
+5. If no match is found after all rotations, return `false`.
+
+**Pseudo Code:**
+```
+FUNCTION isRotationBruteForce(s1, s2):
+    IF size(s1) != size(s2):
+        RETURN false
+    
+    n = size(s1)
+    
+    FOR i FROM 0 TO n-1:
+        isRotation = true
+        
+        FOR j FROM 0 TO n-1:
+            IF s1[(i + j) % n] != s2[j]:
+                isRotation = false
+                BREAK
+        
+        IF isRotation:
+            RETURN true
+    
+    RETURN false
+END FUNCTION
+```
+
+#### Optimal Approach:
+
+**Intuition:**
+An optimized approach leverages the fact that if `s2` is a rotation of `s1`, then `s2` will always be a substring of `s1 + s1`. By doubling `s1` and checking if `s2` is a substring of this doubled string, we can efficiently determine if `s2` is a rotation of `s1`.
+
+**Approach:**
+1. Check if the lengths of the two strings are equal. If not, return `false`.
+2. Concatenate `s1` with itself to form a new string `s1s1`.
+3. Check if `s2` is a substring of `s1s1`.
+4. If it is, return `true`. Otherwise, return `false`.
+
+**Pseudo Code:**
+```
+FUNCTION isSubstring(str1, str2):
+    RETURN find(str1, str2) != -1
+END FUNCTION
+
+FUNCTION isRotationOptimal(s1, s2):
+    IF size(s1) != size(s2):
+        RETURN false
+    
+    s1s1 = s1 + s1
+    RETURN isSubstring(s1s1, s2)
+END FUNCTION
+``` -->
+
+## Lecture 3(2 hrs)
+
+- Sorting algorithms and Problems
+- Selection Sort, Bubble Sort, Insertion Sort, Merge Sort, Quick Sort
+
+## Question 1
