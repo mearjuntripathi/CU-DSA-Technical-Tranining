@@ -1,3 +1,71 @@
+## Question 1:  Construct a singly Linklist :
+
+Create a singly linked list with the following operations:
+
+1. **Insert** a new node at the end of the list.
+2. **Delete** a node by value.
+3. **Search** for a node by value.
+4. **Display** the contents of the list.
+
+You need to implement the following class:
+
+### Question: Construct a Singly Linked List
+
+### Problem Statement
+Create a singly linked list with the following operations:
+
+1. **Insert** a new node at the end of the list.
+2. **Delete** a node by value.
+3. **Search** for a node by value.
+4. **Display** the contents of the list.
+
+### Input Format:
+- Each operation will be provided as a line of input.
+- The first word of the line indicates the operation (`INSERT`, `DELETE`, `SEARCH`, `DISPLAY`).
+- For `INSERT` and `DELETE` operations, an integer value will follow the operation keyword.
+- For `SEARCH` and `DISPLAY` operations, no additional value is provided.
+
+### Output Format:
+- For `DISPLAY`, output the elements of the list in sequence separated by `->`.
+- For `SEARCH`, output the value if found, otherwise output `Not found`.
+- For `DELETE`, output `Deleted` if the node was found and deleted, otherwise output `Not found`.
+- For `INSERT`, there is no output.
+
+### Example:
+
+**Input:**
+```
+INSERT 10
+INSERT 20
+INSERT 30
+DISPLAY
+SEARCH 20
+DELETE 20
+DISPLAY
+SEARCH 20
+```
+
+**Output:**
+```
+10 -> 20 -> 30
+20
+Deleted
+10 -> 30
+Not found
+```
+
+### Explanation:
+
+1. `INSERT 10`: Inserts `10` into the list.
+2. `INSERT 20`: Inserts `20` into the list.
+3. `INSERT 30`: Inserts `30` into the list.
+4. `DISPLAY`: Outputs `10 -> 20 -> 30`.
+5. `SEARCH 20`: Outputs `20` since the node with value `20` is found.
+6. `DELETE 20`: Deletes the node with value `20` and outputs `Deleted`.
+7. `DISPLAY`: Outputs `10 -> 30`.
+8. `SEARCH 20`: Outputs `Not found` since the node with value `20` has been deleted.
+
+
 ## Question 1: [ Add two linked list & delete the middle element ](https://leetcode.com/problems/add-two-numbers/description/)
 
 You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and delete the middle node of obtained list .If there are two middle nodes, delete the second middle node.
