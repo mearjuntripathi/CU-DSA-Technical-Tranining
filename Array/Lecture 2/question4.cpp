@@ -1,76 +1,70 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// with Hashmap
-vector<vector<string>> groupAnagrams1(vector<string>& strs) {
-    unordered_map<string, vector<string>> anagramMap;
-
-    for (const string& str : strs) {
-        string sortedStr = str;
-        sort(sortedStr.begin(), sortedStr.end());
-        anagramMap[sortedStr].push_back(str);
+pair<int,int> bruteForce_sum_neg(vector<int> &nums) {
+    int pos = 0, neg = 0;
+    for(int num : nums) {
+        if(num > 0) pos++;
+        if(num < 0) neg++;
     }
-
-    vector<vector<string>> result;
-    for (auto& pair : anagramMap) {
-        result.push_back(pair.second);
-    }
-
-    return result;
+    return {pos, neg};
 }
 
-// without hashmap
-// Function to group anagrams
-vector<vector<string>> groupAnagrams2(vector<string>& strs) {
-    vector<pair<string, string>> sortedStrs; 
-
-    for (const string& str : strs) {
-        string sortedStr = str;
-        sort(sortedStr.begin(), sortedStr.end());
-        sortedStrs.push_back({sortedStr, str});
-    }
-
-    sort(sortedStrs.begin(), sortedStrs.end());
-
-    vector<vector<string>> result;
-    vector<string> currentGroup;
-    string currentKey = sortedStrs[0].first;
-    for (const auto& p : sortedStrs) {
-        if (p.first == currentKey) {
-            currentGroup.push_back(p.second);
+pair<int,int> optimal_sum_neg(vector<int> &nums) {
+    int size = nums.size();
+    
+    if (nums[0] > 0) return {size, 0};  
+    if (nums[size - 1] < 0) return {0, size};  
+    if (nums[0] == 0 && nums[size - 1] == 0) return {0, 0}; 
+    
+    int lastNeg = -1;
+    int firstPos = size;
+    
+    int left = 0, right = size - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < 0) {
+            if (mid + 1 < size && nums[mid + 1] >= 0) {
+                lastNeg = mid;
+                break;
+            }
+            left = mid + 1;
         } else {
-            result.push_back(currentGroup);
-            currentGroup = {p.second};
-            currentKey = p.first;
+            right = mid - 1;
         }
     }
-    result.push_back(currentGroup); 
-    return result;
+    
+    left = 0, right = size - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] > 0) {
+            if (mid - 1 >= 0 && nums[mid - 1] <= 0) {
+                firstPos = mid;
+                break;
+            }
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    
+    int posCount = size - firstPos;
+    int negCount = lastNeg + 1;
+    
+    return {posCount, negCount};
 }
+
 
 int main() {
-    vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
-    vector<vector<string>> result = groupAnagrams1(strs);
+    vector<int> nums = {-2, -1, -1,0,0, 1, 2, 3,4,5};
+    pair<int, int> data_nums = bruteForce_sum_neg(nums);
+    cout << "max positive: " << data_nums.first << endl;
+    cout << "max negative: " << data_nums.second << endl;
 
-    for (const auto& group : result) {
-        cout << "[";
-        for (const auto& str : group) {
-            cout << "\"" << str << "\", ";
-        }
-        cout << "], ";
-    }
-    cout << endl;
-
-    result = groupAnagrams2(strs);
-
-    for (const auto& group : result) {
-        cout << "[";
-        for (const auto& str : group) {
-            cout << "\"" << str << "\", ";
-        }
-        cout << "], ";
-    }
-    cout << endl;
+    data_nums = optimal_sum_neg(nums);
+    cout << "max positive: " << data_nums.first << endl;
+    cout << "max negative: " << data_nums.second << endl;
 
     return 0;
 }
