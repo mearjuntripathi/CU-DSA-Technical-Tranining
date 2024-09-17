@@ -188,107 +188,7 @@ The problem involves searching for a target value in a rotated sorted integer ar
 - Use linear search for small or unsorted arrays where the overhead of sorting or maintaining a sorted array is not justified.
 - Use rotational binary search for large, rotated sorted arrays where the target value can be quickly found due to the logarithmic time complexity.
 
-## Question 2:
-Given an array of strings, group the anagrams together. You can return the answer in any order.
-
-**Input:**
-- An array of strings `strs` 
-- where `1 <= len(strs) <= 1e5`
-- each string `s` where `1 <= len(s) <= 100`.
-
-**Output:**
-- A list of lists, where each sublist contains strings that are anagrams of each other.
-
-**Example 1:**
-```
-Input: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
-Output: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
-```
-
-**Example 2:**
-```
-Input: strs = ["listen", "silent", "enlist", "inlets", "google", "goolge"]
-Output: [["listen", "silent", "enlist", "inlets"], ["google", "goolge"]]
-```
-
-## Solution
-
-**Intuition and Approach:**
-
-The problem is to group anagrams from a list of strings. An anagram is a word formed by rearranging the letters of another word. Here's how the two provided solutions tackle this problem:
-
-**1. Using Hashmap (`groupAnagrams1`):**
-
-   - **Intuition:** By sorting each string, we can use the sorted string as a key to group anagrams together.
-   - **Approach:**
-      ```
-      FUNCTION groupAnagrams1(strs)
-         DECLARE anagramMap as a hashmap
-
-         FOR each str IN strs
-            sortedStr = SORTED str
-            anagramMap[sortedStr].ADD str
-         END FOR
-
-         DECLARE result as an empty list
-         FOR each pair IN anagramMap
-            ADD pair.second to result
-         END FOR
-
-         RETURN result
-      END FUNCTION
-      ```
-
-**2. Without Using Hashmap (`groupAnagrams2`):**
-
-   - **Intuition:** By sorting each string and maintaining both the original and sorted versions, we can sort this list and then group anagrams based on the sorted strings.
-   - **Approach:**
-      ```
-      FUNCTION groupAnagrams2(strs)
-         DECLARE sortedStrs as an empty list
-
-         FOR each str IN strs
-            sortedStr = SORTED str
-            ADD (sortedStr, str) to sortedStrs
-         END FOR
-
-         SORT sortedStrs based on the first element of each pair
-
-         DECLARE result as an empty list
-         DECLARE currentGroup as an empty list
-         currentKey = first element of the first pair in sortedStrs
-
-         FOR each pair IN sortedStrs
-            IF pair.first EQUALS currentKey
-               ADD pair.second to currentGroup
-            ELSE
-               ADD currentGroup to result
-               currentGroup = [pair.second]
-               currentKey = pair.first
-            END IF
-         END FOR
-
-         ADD currentGroup to result
-         RETURN result
-      END FUNCTION
-      ```
-
-**Key Differences and Considerations:**
-
-- **Time Complexity:**
-   - Using Hashmap: Sorting each string takes `O(k log k)` where `k` is the length of the string. The overall complexity is `O(n k log k)` where `n` is the number of strings.
-   - Without Hashmap: Similar sorting complexity `O(n k log k)` but includes additional sorting of the pairs `O(n log n)`.
-
-- **Space Complexity:**
-   - Using Hashmap: `O(n k)` due to the hashmap storing all strings.
-   - Without Hashmap: `O(n k)` due to the list of pairs.
-
-**Choosing the Right Approach:**
-
-- The hashmap approach (`groupAnagrams1`) is more intuitive and straightforward, especially when dealing with large datasets.
-- The non-hashmap approach (`groupAnagrams2`) can be useful in environments where hashmaps are not available or preferred.
-
-## Question 3: 
+## Question 2: 
 Given an integer array `nums`, find a peak element. A peak element is an element that is not smaller than its neighbors. If the array contains multiple peaks, return the index to any one of the peaks.
 
 **Input:**
@@ -397,7 +297,7 @@ The problem involves finding a peak element in a given integer array, where a pe
 - Use the brute force approach for small arrays or when a simple implementation is preferred.
 - Use the optimal approach for large arrays to take advantage of the logarithmic time complexity for efficient peak element finding.
 
-## Question 4: 
+## Question 3: 
 Given an array `nums` sorted in non-decreasing order, return the maximum between the number of positive integers and the number of negative integers.
 
 In other words, if the number of positive integers in `nums` is `pos` and the number of negative integers is `neg`, then return the maximum of `pos` and `neg`.
@@ -528,4 +428,110 @@ The problem involves counting the number of positive and negative numbers in a s
 - Use the brute force approach for small arrays or when a simple implementation is preferred.
 - Use the optimal approach for large arrays to take advantage of the logarithmic time complexity for efficient counting.
 
+
+## Question 4: 
+Given an array of integers nums, calculate the pivot index of this array.
+
+The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+
+If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+
+Return the leftmost pivot index. If no such index exists, return -1.
+
+**Example 1:**
+```
+Input: nums = [1,7,3,6,5,6]
+Output: 3
+Explanation: The pivot index is 3.
+Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+Right sum = nums[4] + nums[5] = 5 + 6 = 11
+```
+**Example 2:**
+```
+Input: nums = [1,2,3]
+Output: -1
+Explanation: There is no index that satisfies the conditions in the problem statement.
+```
+**Example 3:**
+```
+Input: nums = [2,1,-1]
+Output: 0
+Explanation: The pivot index is 0.
+Left sum = 0 (no elements to the left of index 0)
+Right sum = nums[1] + nums[2] = 1 + -1 = 0
+```
+Constraints:
+
+- `1 <= nums.length <= 1e4`
+- `-1000 <= nums[i] <= 1000`
+
+
+## Solution
+
+**Intuition and Approach:**
+
+The problem is to find the pivot index of an array where the sum of the elements to the left of the pivot is equal to the sum of the elements to the right of the pivot.
+
+**1. Brute Force Approach (`bruteForce_pivotIndex`):**
+
+   - **Intuition:** For each index, calculate the sum of elements on the left and the sum of elements on the right. If they are equal, that index is the pivot.
+   - **Approach:**
+      ```
+      FUNCTION bruteForce_pivotIndex(nums)
+         n = LENGTH(nums)
+         
+         FOR i FROM 0 TO n-1
+            leftSum = 0
+            rightSum = 0
+            
+            // Calculate left sum
+            FOR j FROM 0 TO i-1
+               leftSum = leftSum + nums[j]
+            
+            // Calculate right sum
+            FOR j FROM i+1 TO n-1
+               rightSum = rightSum + nums[j]
+            
+            // Check if left sum is equal to right sum
+            IF leftSum == rightSum
+               RETURN i
+         END FOR
+         
+         RETURN -1  // Return -1 if no pivot index is found
+      END FUNCTION
+      ```
+
+**2. Optimal Solution (`optimal_pivotIndex`):**
+
+   - **Intuition:** Calculate the total sum of the array first. Then, iterate through the array while maintaining the sum of elements on the right and left. Adjust these sums dynamically to find the pivot index without recalculating sums repeatedly.
+   - **Approach:**
+      ```
+      FUNCTION optimal_pivotIndex(nums)
+         leftSum = 0
+         totalSum = SUM of all elements in nums
+         
+         FOR i FROM 0 TO LENGTH(nums)-1
+            totalSum = totalSum - nums[i]  // Adjust right sum
+            IF leftSum == totalSum
+               RETURN i
+            leftSum = leftSum + nums[i]  // Adjust left sum
+         END FOR
+         
+         RETURN -1  // Return -1 if no pivot index is found
+      END FUNCTION
+      ```
+
+**Key Differences and Considerations:**
+
+- **Time Complexity:**
+   - Brute Force: `O(n^2)` due to the nested loops for calculating sums.
+   - Optimal: `O(n)` because we only traverse the array twice (once to calculate the total sum and once to find the pivot index).
+
+- **Space Complexity:**
+   - Both approaches use `O(1)` extra space, as they only require a few variables.
+
+**Choosing the Right Approach:**
+
+- For small arrays, the brute force approach might be acceptable.
+- For larger datasets, the optimal approach is significantly more efficient.
 
